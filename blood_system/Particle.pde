@@ -4,18 +4,9 @@ class Particle {
   PVector velocity;
   PVector acceleration;
   color col;
-  
-  float lifespan = 255;
-  
-  Particle(PVector l, PVector v, color c) {
-    location = l.copy();
-    acceleration = new PVector(0, 0, 0);
-    velocity = v;
-    col = c;
-    lifespan = 255;
-  }
+  int lifespan;
 
-  Particle(PVector l, PVector v, color c, float ls) {
+  Particle(PVector l, PVector v, color c, int ls) {
     location = l.copy();
     acceleration = new PVector(0, 0, 0);
     velocity = v;
@@ -29,11 +20,7 @@ class Particle {
   }
  
   void update() {
-    velocity.add(acceleration);
-    lastLocation = location.copy();
-    location.add(velocity);
-    acceleration.mult(0);
-    lifespan -= 2;
+    lifespan -= 1;
   }
 
   void applyForce(PVector force) {
@@ -49,10 +36,6 @@ class Particle {
     // popMatrix();
 
     // stroke(240, 0, 0, lifespan);
-    stroke(this.col);
-    strokeWeight(2);
-    line(lastLocation.x, lastLocation.y, lastLocation.z, 
-      location.x, location.y, location.z);
   }
   
   boolean isDead() {

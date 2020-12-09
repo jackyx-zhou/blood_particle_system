@@ -9,7 +9,7 @@ class Floor {
         translate(width/2, yHeight,0);
         rectMode(CENTER);
         rotateX(PI/2);
-        rect(0, 0, width/2, width/4);
+        rect(0, 0, width, width/2);
         popMatrix();
     }
 }

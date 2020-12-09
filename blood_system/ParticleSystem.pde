@@ -9,7 +9,7 @@ class ParticleSystem {
     public void addParticle(color c) {
         PVector initialPos = new PVector(width/2 + random(-2, 2), 30, 0);
         PVector initialV = new PVector(random(-1,1),random(-2,1), 0.0);
-        Particle p = new Particle(initialPos, initialV,c);
+        Particle p = new AirParticle(initialPos, initialV, c, pLifespan);
         particles.add(p);
     }
 

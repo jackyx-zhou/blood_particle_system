@@ -1,13 +1,8 @@
 class GroundParticle extends Particle {
     float radius;
-    GroundParticle(PVector l, color c, float ls) {
-        super(l, new PVector(0,0,0), c, ls+100);
+    GroundParticle(PVector l, color c, int ls) {
+        super(l, new PVector(0,0,0), c, ls);
         radius = random(20);
-    }
-
-    @Override
-    void update() {
-        lifespan -= 2;
     }
 
     @Override
