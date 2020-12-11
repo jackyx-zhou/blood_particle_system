@@ -1,6 +1,6 @@
 class Particle {
-  PVector location;
-  PVector lastLocation;
+  public PVector location;
+  public PVector lastLocation;
   PVector velocity;
   PVector acceleration;
   color col;
@@ -45,4 +45,13 @@ class Particle {
       return false;
     }
   }
+
+  public PVector getLocation() {
+      return location;
+  }
+  
+  public PVector getLastLocation() {
+      return lastLocation;
+  }
+  
 }

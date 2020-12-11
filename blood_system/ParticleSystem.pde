@@ -1,15 +1,19 @@
 import java.util.ListIterator;
 
 class ParticleSystem {
-    private ArrayList<Particle> particles;
+    ArrayList<Particle> particles;
+    PVector emitterPos = new PVector(width/2, 30, 0);
+    RenderMode renderMode;
 
-    public ParticleSystem() {
+    public ParticleSystem(RenderMode renderMode) {
+        this.renderMode = renderMode;
         particles = new ArrayList<Particle>();
     }
+
     public void addParticle(color c) {
-        PVector initialPos = new PVector(width/2 + random(-2, 2), 30, 0);
+        PVector initialPos = emitterPos;
         PVector initialV = new PVector(random(-1,1),random(-2,1), 0.0);
-        Particle p = new AirParticle(initialPos, initialV, c, pLifespan);
+        Particle p = new ParticlePoint(initialPos, initialV, c, pLifespan);
         particles.add(p);
     }
 
@@ -23,7 +27,9 @@ class ParticleSystem {
         while (iter.hasNext()) {
             Particle p = iter.next();
             p.run();
-            iter.set(hitFloor(p, f));
+            if (floorSwitch) {
+                iter.set(hitFloor(p, f));
+            }
             if (p.isDead()) {
                 iter.remove();
             }

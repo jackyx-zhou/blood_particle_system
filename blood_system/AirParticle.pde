@@ -17,5 +17,13 @@ class AirParticle extends Particle {
         strokeWeight(2);
         line(lastLocation.x, lastLocation.y, lastLocation.z, 
         location.x, location.y, location.z);
+
+        // point(location.x, location.y, location.z);
+        
+        // pushMatrix();
+        // translate(location.x, location.y, location.z);
+        // fill(this.col);
+        // sphere(2);
+        // popMatrix();
     }
 }
