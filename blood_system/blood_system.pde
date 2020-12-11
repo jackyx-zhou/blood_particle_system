@@ -93,9 +93,7 @@ void renderModeButtons(int i) {
             currentRenderMode = RenderMode.TEXTURE;
         break;
       }
-      if (i != 3) {
-          rain = new AreaEmitter(currentRenderMode);
-      }
+      rain = new AreaEmitter(currentRenderMode);
       println("current render mode: " + currentRenderMode);
 }
 

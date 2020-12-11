@@ -1,5 +1,5 @@
 public class AreaEmitter extends ParticleSystem {
-
+    
     public AreaEmitter(RenderMode renderMode) {
         super(renderMode);   
     }
@@ -19,6 +19,9 @@ public class AreaEmitter extends ParticleSystem {
             case QUAD :
                 p = new ParticleQuad(initialPos, initialV, c, pLifespan);
             break;
+            case TEXTURE :
+                p = new ParticleTexture(initialPos, initialV, c, pLifespan, textureImg);
+            break;
             default :
                 p = new ParticlePoint(initialPos, initialV, c, pLifespan);
             break;
@@ -32,7 +35,6 @@ public class AreaEmitter extends ParticleSystem {
         ListIterator<Particle> iter = particles.listIterator();
         while (iter.hasNext()) {
             Particle p = iter.next();
-            // p.update();
             p.run();
             if (p.isDead()) {
                 iter.remove();
@@ -40,7 +42,7 @@ public class AreaEmitter extends ParticleSystem {
         }
     }
 
-    public ArrayList<Particle> getParticles() {
+    public LinkedList<Particle> getParticles() {
         return particles ;
     }
     

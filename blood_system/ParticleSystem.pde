@@ -1,13 +1,15 @@
+import java.util.LinkedList;
 import java.util.ListIterator;
 
 class ParticleSystem {
-    ArrayList<Particle> particles;
+    LinkedList<Particle> particles;
     PVector emitterPos = new PVector(width/2, 30, 0);
     RenderMode renderMode;
+    PImage textureImg = loadImage("../University/particle_system/blood_particle_system/blood_system/flower.png");
 
     public ParticleSystem(RenderMode renderMode) {
         this.renderMode = renderMode;
-        particles = new ArrayList<Particle>();
+        particles = new LinkedList<Particle>();
     }
 
     public void addParticle(color c) {

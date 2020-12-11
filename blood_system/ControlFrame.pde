@@ -95,7 +95,7 @@ class ControlFrame extends PApplet {
         .plugTo(parent)
         .setValue(birthRate)
         .setPosition(5,40)
-        .setRange(0, 100)
+        .setRange(0, 200)
         .moveTo(g3);
 
     cp5.addRadioButton("renderModeButtons")
