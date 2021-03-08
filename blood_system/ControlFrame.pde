@@ -114,6 +114,20 @@ class ControlFrame extends PApplet {
          .plugTo(parent)
          .moveTo(g3)
          ;
+    
+    cp5.addButton("addFlowers")
+     .setPosition(5, 80)
+     .setSize(80, 15)
+     .plugTo(parent)
+     .moveTo(g3)
+     ;
+    
+    cp5.addButton("clearFlowers")
+     .setPosition(100, 80)
+     .setSize(100, 15)
+     .plugTo(parent)
+     .moveTo(g3)
+     ;
 
     Accordion accordion = cp5.addAccordion("acc")
                             .setPosition(5,5)

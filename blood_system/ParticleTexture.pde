@@ -13,7 +13,7 @@ public class ParticleTexture extends AirParticle{
     }
 
     void display() {
-        float spinFactor = acceleration.mag();
+        float spinFactor = velocity.mag();
         pushMatrix();
             translate(location.x, location.y, location.z);
             rotateX(xspin * spinFactor);

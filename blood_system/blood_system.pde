@@ -22,7 +22,7 @@ RenderMode currentRenderMode = RenderMode.POINT;
 RadioButton renderModeButtons;
 
 AreaEmitter rain;
-ParticleSystem ps;
+LinkedList<ParticleSystem> flowers;
 Floor floor;
 
 void settings() {
@@ -36,7 +36,7 @@ void setup() {
   frameRate(60);
   initCamera();
 
-  // ps = new ParticleSystem();
+  flowers = new LinkedList<ParticleSystem>();
   rain = new AreaEmitter(currentRenderMode);
   floor = new Floor();
 }
@@ -52,10 +52,12 @@ void draw() {
   PVector gravity = new PVector(0, gravityVal, 0);
   PVector wind = new PVector(-sin(radians(windAngle)), 0, cos(radians(windAngle))).mult(windMag);
 
-  // ps.addParticle(particleColor.getColorValue());
-  // ps.applyForce(gravity);
-  // ps.applyForce(wind);
-  // ps.run(floor);
+  for (ParticleSystem ps : flowers) {
+    ps.addParticle(particleColor.getColorValue());
+    ps.applyForce(gravity);
+    ps.applyForce(wind);
+    ps.run(floor);
+  }
 
   for (int i = 0; i < birthRate; i++) {
     rain.addParticle(particleColor.getColorValue());
@@ -95,6 +97,14 @@ void renderModeButtons(int i) {
       }
       rain = new AreaEmitter(currentRenderMode);
       println("current render mode: " + currentRenderMode);
+}
+
+void addFlowers() {
+  flowers.add(new ParticleSystem(RenderMode.TEXTURE, new PVector(random(0, width), random(0, 30), random(-width/4, width/4))));
+}
+
+void clearFlowers() {
+  flowers.clear();
 }
 
 void initCamera() {

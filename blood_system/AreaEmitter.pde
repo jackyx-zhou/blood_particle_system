@@ -1,12 +1,12 @@
 public class AreaEmitter extends ParticleSystem {
     
     public AreaEmitter(RenderMode renderMode) {
-        super(renderMode);   
+        super(renderMode, new PVector());   
     }
 
     @Override
     public void addParticle(color c) {
-        PVector initialPos = new PVector(random(0, width), 30, random(-width/2, width/2));
+        PVector initialPos = new PVector(random(0, width), random(0, 30), random(-width/2, width/2));
         PVector initialV = new PVector(random(-1,1),random(-2,1), 0.0);
         Particle p;
         switch (this.renderMode) {

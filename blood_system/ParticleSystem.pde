@@ -3,19 +3,37 @@ import java.util.ListIterator;
 
 class ParticleSystem {
     LinkedList<Particle> particles;
-    PVector emitterPos = new PVector(width/2, 30, 0);
+    PVector emitterPos;
     RenderMode renderMode;
     PImage textureImg = loadImage("../University/particle_system/blood_particle_system/blood_system/flower.png");
 
-    public ParticleSystem(RenderMode renderMode) {
+    public ParticleSystem(RenderMode renderMode, PVector emitterPos) {
         this.renderMode = renderMode;
+        this.emitterPos = emitterPos;
         particles = new LinkedList<Particle>();
     }
 
     public void addParticle(color c) {
         PVector initialPos = emitterPos;
         PVector initialV = new PVector(random(-1,1),random(-2,1), 0.0);
-        Particle p = new ParticlePoint(initialPos, initialV, c, pLifespan);
+        Particle p;
+        switch (this.renderMode) {
+            case POINT :
+                p = new ParticlePoint(initialPos, initialV, c, pLifespan);
+            break;
+            case LINE :
+                p = new ParticleLine(initialPos, initialV, c, pLifespan);
+            break;
+            case QUAD :
+                p = new ParticleQuad(initialPos, initialV, c, pLifespan);
+            break;
+            case TEXTURE :
+                p = new ParticleTexture(initialPos, initialV, c, pLifespan, textureImg);
+            break;
+            default :
+                p = new ParticlePoint(initialPos, initialV, c, pLifespan);
+            break;
+        }
         particles.add(p);
     }
 
